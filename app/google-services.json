@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "166290310019",
+    "project_id": "toyproject-push-alarm",
+    "storage_bucket": "toyproject-push-alarm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:166290310019:android:f80c3c957d0b2be6fa6cb6",
+        "android_client_info": {
+          "package_name": "com.example.toyproject009_pushalarm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "166290310019-3t03irvnns5f7bqo7th6mtquldsrv71b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkxD41uK2D_xBoh6r_uPPhbY1iv3zjZsc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "166290310019-3t03irvnns5f7bqo7th6mtquldsrv71b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
