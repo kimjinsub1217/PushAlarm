@@ -3,7 +3,10 @@ package com.example.toyproject009_pushalarm
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.widget.RemoteViews
 import androidx.core.app.NotificationCompat
@@ -53,11 +56,18 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         title: String?,
         message: String?
     ): Notification {
+        val intent = Intent(this,MainActivity::class.java).apply {
+            putExtra("notificationType","${type.title} 타입")
+            addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+        }
+        val pendingIntent =PendingIntent.getActivity(this, type.id, intent,FLAG_UPDATE_CURRENT)
         val notificationBuilder = NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_notifications)
             .setContentTitle(title)
             .setContentText(message)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
 
         when (type) {
             NotificationType.NORMAL -> Unit
@@ -65,37 +75,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 notificationBuilder.setStyle(
                     NotificationCompat.BigTextStyle()
                         .bigText(
-                            "\uD83D\uDEA6\n" +
-                                    "\uD83C\uDF10\n" +
-                                    "\uD83C\uDF0E\n" +
-                                    "\uD83C\uDF78\n" +
-                                    "\uD83D\uDDFE\n" +
-                                    "\uD83C\uDF74\n" +
-                                    "\uD83D\uDC22\n" +
-                                    "\uD83D\uDC0D\n" +
-                                    "\uD83E\uDD9F\n" +
-                                    "\uD83E\uDD32\n" +
-                                    "\uD83D\uDC4F\n" +
-                                    "\uD83E\uDDB4\n" +
-                                    "\uD83E\uDEC0\n" +
-                                    "\uD83D\uDC81\n" +
-                                    "\uD83D\uDE4D\n" +
-                                    "\uD83E\uDD8D\n" +
-                                    "\uD83E\uDD3C\n" +
-                                    "\uD83D\uDC7B\n" +
-                                    "\uD83D\uDC7D\n" +
-                                    "\uD83D\uDC7E\n" +
-                                    "\uD83E\uDD16\n" +
-                                    "\uD83D\uDE3A\n" +
-                                    "\uD83D\uDE22\n" +
-                                    "\uD83D\uDE25\n" +
-                                    "\uD83E\uDD74\n" +
-                                    "\uD83D\uDE02\n" +
-                                    "\uD83E\uDD23\n" +
-                                    "\uD83D\uDE05\n" +
-                                    "\uD83D\uDE01\n" +
-                                    "\uD83D\uDE03\n" +
-                                    "\uD83D\uDE00"
+                            "\uD83C\uDF4F \uD83C\uDF4E \uD83C\uDF50 \uD83C\uDF4A \uD83C\uDF4B \uD83C\uDF4C \uD83C\uDF49 \uD83C\uDF47 \uD83C\uDF53 \uD83C\uDF48 \uD83C\uDF52 \uD83E\uDED0 \uD83C\uDF51 \uD83E\uDD6D \uD83C\uDF4D \uD83E\uDD65 \uD83E\uDD5D \uD83C\uDF45 \uD83E\uDD51 \uD83E\uDED2 \uD83C\uDF46 \uD83C\uDF36 \uD83E\uDED1 \uD83E\uDD52 \uD83E\uDD6C \uD83E\uDD66 \uD83E\uDDC4 \uD83E\uDDC5 \uD83C\uDF3D \uD83E\uDD55 \uD83E\uDD57 \uD83E\uDD54 \uD83C\uDF60 \uD83E\uDD5C \uD83C\uDF6F \uD83C\uDF5E \uD83E\uDD50 \uD83E\uDD56 \uD83E\uDED3 \uD83E\uDD68 \uD83E\uDD6F \uD83E\uDD5E \uD83E\uDDC7 \uD83E\uDDC0 \uD83C\uDF57 \uD83C\uDF56 \uD83E\uDD69 \uD83C\uDF64 \uD83E\uDD5A \uD83C\uDF73"
                         )
                 )
             }
